@@ -1,6 +1,31 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+
+<link rel="dns-prefetch" href="https://alt743.github.io">
+<link rel="preconnect" href="https://alt743.github.io">
+<style>
+video { background: #0a0a0a; transition: opacity 0.6s ease; opacity: 0.4; }
+.video-ready { opacity: 0.9 !important; }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var h=document.querySelector('.hero-video');
+  if(h){h.setAttribute('preload','auto');h.setAttribute('autoplay','');h.setAttribute('muted','');h.setAttribute('loop','');h.setAttribute('playsinline','');}
+  document.querySelectorAll('video').forEach(function(v){
+    v.addEventListener('canplay',function(){v.classList.add('video-ready');});
+    if(v.readyState>=3)v.classList.add('video-ready');
+  });
+  // Lazy load scene videos via IntersectionObserver
+  var sv=document.querySelectorAll('.scene-video');
+  var obs=new IntersectionObserver(function(e){
+    e.forEach(function(entry){
+      if(entry.isIntersecting){entry.target.setAttribute('preload','auto');obs.unobserve(entry.target);}
+    });
+  },{rootMargin:'300px'});
+  sv.forEach(function(v){obs.observe(v);});
+});
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>江苏艾力特绿色能源 - 企业宣传片</title>
@@ -551,9 +576,9 @@ body {
     </div>
 
     <div class="image-grid">
-      <div class="video-player"><img src="img_1.png" style="width:100%;display:block;" alt="央企合作"></div>
-      <div class="video-player"><img src="img_2.png" style="width:100%;display:block;" alt="全流程服务"></div>
-      <div class="video-player"><img src="img_3.png" style="width:100%;display:block;" alt="项目经验"></div>
+      <div class="video-player"><img loading="lazy" src="img_1.png" style="width:100%;display:block;" alt="央企合作"></div>
+      <div class="video-player"><img loading="lazy" src="img_2.png" style="width:100%;display:block;" alt="全流程服务"></div>
+      <div class="video-player"><img loading="lazy" src="img_3.png" style="width:100%;display:block;" alt="项目经验"></div>
     </div>
   </div>
 </section>
@@ -613,9 +638,9 @@ body {
 
 
     <div class="image-grid">
-      <div class="video-player"><img src="img_4.jpg" style="width:100%;display:block;" alt="匠心工艺"></div>
-      <div class="video-player"><img src="img_5.jpg" style="width:100%;display:block;" alt="匠心工艺"></div>
-      <div class="video-player"><img src="img_6.jpg" style="width:100%;display:block;" alt="匠心工艺"></div>
+      <div class="video-player"><img loading="lazy" src="img_4.jpg" style="width:100%;display:block;" alt="匠心工艺"></div>
+      <div class="video-player"><img loading="lazy" src="img_5.jpg" style="width:100%;display:block;" alt="匠心工艺"></div>
+      <div class="video-player"><img loading="lazy" src="img_6.jpg" style="width:100%;display:block;" alt="匠心工艺"></div>
     </div>
   </div>
 </section>
@@ -679,9 +704,9 @@ body {
     </p>
 
     <div class="image-grid" style="margin-top:15px;">
-      <div class="video-player"><img src="img_7.jpg" style="width:100%;display:block;" alt="施工匠心工艺"></div>
-      <div class="video-player"><img src="img_8.jpg" style="width:100%;display:block;" alt="施工匠心工艺"></div>
-      <div class="video-player"><img src="img_9.jpg" style="width:100%;display:block;" alt="施工匠心工艺"></div>
+      <div class="video-player"><img loading="lazy" src="img_7.jpg" style="width:100%;display:block;" alt="施工匠心工艺"></div>
+      <div class="video-player"><img loading="lazy" src="img_8.jpg" style="width:100%;display:block;" alt="施工匠心工艺"></div>
+      <div class="video-player"><img loading="lazy" src="img_9.jpg" style="width:100%;display:block;" alt="施工匠心工艺"></div>
     </div>
 </section>
 <!-- ===== SCENE 2: Wenzhou Project ===== -->
@@ -711,7 +736,7 @@ body {
       <div class="data-item"><div class="data-num">15,800吨</div><div class="data-label">年碳减排</div></div>
     </div>
     <div class="video-player">
-      <img src="https://images.unsplash.com/photo-1611365892117-00ac5ef43c90?w=700&q=80" style="width:100%;display:block;" alt="温州渔光互补光伏项目">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1611365892117-00ac5ef43c90?w=700&q=80" style="width:100%;display:block;" alt="温州渔光互补光伏项目">
     </div>
   </div>
 </section>
@@ -744,8 +769,8 @@ body {
       <div class="data-item"><div class="data-num">3,332吨</div><div class="data-label">年碳减排</div></div>
     </div>
     <div class="image-grid" style="grid-template-columns: 1fr 1fr; max-width: 500px; margin: 20px auto;">
-      <div class="video-player"><img src="img_10.png" style="width:100%;display:block;" alt="烤烟房光伏"></div>
-      <div class="video-player"><img src="img_11.png" style="width:100%;display:block;" alt="烤烟房光伏"></div>
+      <div class="video-player"><img loading="lazy" src="img_10.png" style="width:100%;display:block;" alt="烤烟房光伏"></div>
+      <div class="video-player"><img loading="lazy" src="img_11.png" style="width:100%;display:block;" alt="烤烟房光伏"></div>
     </div>
   </div>
 </section>
@@ -772,8 +797,8 @@ body {
       <div class="data-item"><div class="data-num">978吨</div><div class="data-label">年碳减排</div></div>
     </div>
     <div class="image-grid" style="grid-template-columns: 1fr 1fr; max-width: 500px; margin: 20px auto;">
-      <div class="video-player"><img src="img_12.png" style="width:100%;display:block;" alt="山东大地的力量"></div>
-      <div class="video-player"><img src="img_13.png" style="width:100%;display:block;" alt="山东大地的力量"></div>
+      <div class="video-player"><img loading="lazy" src="img_12.png" style="width:100%;display:block;" alt="山东大地的力量"></div>
+      <div class="video-player"><img loading="lazy" src="img_13.png" style="width:100%;display:block;" alt="山东大地的力量"></div>
     </div>
   </div>
 </section>
@@ -801,8 +826,8 @@ body {
       <tr><td>义乌多企业屋顶光伏</td><td>1.9MW</td></tr>
     </div>
     <div class="image-grid" style="grid-template-columns: 1fr 1fr; max-width: 500px; margin: 20px auto;">
-      <div class="video-player"><img src="img_14.png" style="width:100%;display:block;" alt="屋顶绿色革命"></div>
-      <div class="video-player"><img src="img_15.png" style="width:100%;display:block;" alt="屋顶绿色革命"></div>
+      <div class="video-player"><img loading="lazy" src="img_14.png" style="width:100%;display:block;" alt="屋顶绿色革命"></div>
+      <div class="video-player"><img loading="lazy" src="img_15.png" style="width:100%;display:block;" alt="屋顶绿色革命"></div>
     </div>
   </div>
 </section>
